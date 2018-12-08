@@ -147,53 +147,53 @@ int main()
 		case 3: printf("Length of %s=%d",str,length(str));break;//Length of String
 
 		case 4:	copy(str,str1);//Copy string
-			printf("\nCopied string=");
-			display(str1);
-			break;
+						printf("\nCopied string=");
+						display(str1);
+						break;
 
 		case 5:	printf("Enter two strings:");//Check if 2 strings are equal
-			scanf("%s",str);
-			scanf("%s",str1);
-			printf("%s?=%s:%d",str,str1,equal(str,str1));
-			break;
+						scanf("%s",str);
+						scanf("%s",str1);
+						printf("%s?=%s:%d",str,str1,equal(str,str1));
+						break;
 
 		case 6:	printf("Enter string to reverse:\n");//Reverse string
-			accept(str);
-			reverse(str,str1);
-			printf("Reverse of %s=%s",str1,str);
-			break;
+						accept(str);
+						reverse(str,str1);
+						printf("Reverse of %s=%s",str1,str);
+						break;
 
 		case 7: printf("Enter string to check palindrome:\n");//Check palindrome.
-			accept(str);
-			palindrome(str);
-			break;
+						accept(str);
+						palindrome(str);
+						break;
 
 		case 8: printf("Enter 2 strings, whether 2nd is a substring of 1st\n");//Substring Checker, with overlap
-			accept(str);
-			accept(str1);
+						accept(str);
+						accept(str1);
 
-			if(match2(str,str1,1)>0){printf("%s is a substring of %s.",str1,str);
-			printf("%s is present %d times in %s, considering overlaps also\n\n",str1,match2(str,str1,1),str);}
+						if(match2(str,str1,1)>0){printf("%s is a substring of %s.",str1,str);
+						printf("%s is present %d times in %s, considering overlaps also\n\n",str1,match2(str,str1,1),str);}
 
-			else printf("%s is not a substring of %s.",str1,str);
-			break;
+						else printf("%s is not a substring of %s.",str1,str);
+						break;
 
 		case 9:	printf("\nEnter 2 strings, to concatenate 2nd to 1st\n");//Concat 2 strings
 		       	accept(str);
-			accept(str1);
-			concatenate(str,str1);
-			printf("Concatenated string=%s\n",str);
-			break;
+						accept(str1);
+						concatenate(str,str1);
+						printf("Concatenated string=%s\n",str);
+						break;
 
 		case 10:printf("Enter 2 strings to compare:");//Compare 2 strings
-			accept(str);
-			accept(str1);
-			int d=compare(str,str1);
-			if(d>0){printf("%s is greater than %s",str,str1);}
-			if(d<0){printf("%s is less than %s",str,str1);}
-			if(d==0){printf("%s is equal to %s",str,str1);}
-			printf("\nResult=%d",d);
-			break;
+						accept(str);
+						accept(str1);
+						int d=compare(str,str1);
+						if(d>0){printf("%s is greater than %s",str,str1);}
+						if(d<0){printf("%s is less than %s",str,str1);}
+						if(d==0){printf("%s is equal to %s",str,str1);}
+						printf("\nResult=%d",d);
+						break;
 
 
 	}
