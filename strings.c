@@ -130,6 +130,7 @@ int freq(char *str,char c)
 	}
 	return count;
 }
+
 char *replace(const char *s, const char *oldW,
                                  const char *newW)
 {
