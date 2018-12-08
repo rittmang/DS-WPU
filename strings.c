@@ -171,7 +171,6 @@ int main()
 		case 8: printf("Enter 2 strings, whether 2nd is a substring of 1st\n");//Substring Checker, with overlap
 						accept(str);
 						accept(str1);
-
 						if(match2(str,str1,1)>0){printf("%s is a substring of %s.",str1,str);
 						printf("%s is present %d times in %s, considering overlaps also\n\n",str1,match2(str,str1,1),str);}
 
