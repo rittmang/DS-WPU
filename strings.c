@@ -194,6 +194,14 @@ int main()
 						printf("\nResult=%d",d);
 						break;
 
+		case 11:printf("Enter string:");
+						accept(str);
+						printf("Enter character:\n");
+						char ch;
+						scanf("%c",&ch);
+						printf("\n%c is present %d times in %s.",ch,freq(str,ch),str);
+						break;
+
 
 	}
 	printf("\n------------------------------------------\n");
