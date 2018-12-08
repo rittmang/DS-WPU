@@ -128,6 +128,47 @@ int freq(char *str,char c)
 	}
 	return count;
 }
+char *replace(const char *s, const char *oldW,
+                                 const char *newW)
+{
+    char *result;
+    int i, cnt = 0;
+    int newWlen = strlen(newW);
+    int oldWlen = strlen(oldW);
+
+    // Counting the number of times old word
+    // occur in the string
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        if (strstr(&s[i], oldW) == &s[i])
+        {
+            cnt++;
+
+            // Jumping to index after the old word.
+            i += oldWlen - 1;
+        }
+    }
+
+    // Making new string of enough length
+    result = (char *)malloc(i + cnt * (newWlen - oldWlen) + 1);
+
+    i = 0;
+    while (*s)
+    {
+        // compare the substring with the result
+        if (strstr(s, oldW) == s)
+        {
+            strcpy(&result[i], newW);
+            i += newWlen;
+            s += oldWlen;
+        }
+        else
+            result[i++] = *s++;
+    }
+
+    result[i] = '\0';
+    return result;
+}
 int main()
 {
 
@@ -135,7 +176,7 @@ int main()
 	char str[20];// A String of max 20 characters
 
 	do{
-	printf("\n0. Exit\n1.Accept String\n2.Display String\n3.Get length of string\n4.Copy string\n5.Equal strings?\n6.Reverse string\n7.Palindrome?\n8.Substring?\n9.Concatenate\n10. Compare 2 strings\n");//Menu
+	printf("\n0. Exit\n1.Accept String\n2.Display String\n3.Get length of string\n4.Copy string\n5.Equal strings?\n6.Reverse string\n7.Palindrome?\n8.Substring?\n9.Concatenate\n10. Compare 2 strings\n11. Find Frequency of character in string\n12. Replace a substring by another string\n");//Menu
 	scanf("%d",&choice);
 	char str1[20],ch='a';
 	switch(choice)
@@ -201,6 +242,24 @@ int main()
 						printf("\n%c is present %d times in %s.",ch,freq(str,ch),str);
 						break;
 
+		case 12:printf("\nEnter original FULL string");
+						accept(str);
+					ss:printf("\nEnter substring:")
+						accept(str1);
+						if(match2(str,str1,1)>0)//if str1 is a substring of str
+						{
+							printf("\nEnter string to change %s with:",str1);
+							accept(str2);
+							char *result=NULL;
+							result=replace(str,str1,str2);
+							printf("\nNew string:%s",result);
+						}
+						else
+						{
+							printf("Substring bola thha.");
+							goto ss;
+						}
+						break;
 
 	}
 	printf("\n------------------------------------------\n");
