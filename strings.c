@@ -117,7 +117,17 @@ int compare(const char *str1,const char *str2)//regular compare for entire strin
 	}
 
 }
-
+int freq(char *str,char c)
+{
+	int count=0;
+	while(*str!='\0')
+	{
+		if(*str==c)
+			count++;
+		str++;
+	}
+	return count;
+}
 int main()
 {
 
