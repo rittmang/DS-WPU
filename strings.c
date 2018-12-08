@@ -5,7 +5,7 @@ Batch: D4
 Subject: DS-I
 */
 #include<stdio.h>
-
+#include<string.h>//for replace() function only
 void accept(char *str)//to accept string
 {
 	scanf("%s",str);
