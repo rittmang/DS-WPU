@@ -8,7 +8,7 @@ Subject: DS-I
 
 void accept(char *str)//to accept string
 {
-	scanf("%s",str);	
+	scanf("%s",str);
 }
 void display(char str[])//to display string
 {
@@ -82,7 +82,7 @@ void palindrome(char *a)
 	reverse(a,str1);
 	if(equal(a,str1)==1)printf("%s is a Palindrome.",str1);
 	else printf("%s is not a Palindrome.",str1);
-	
+
 }
 int match2(char *s, char *p, int overlap)	//used for determining substring with overlap
 {
@@ -93,7 +93,7 @@ int match2(char *s, char *p, int overlap)	//used for determining substring with 
                 if (!overlap) s += l - 1;
                 c++;				//increment counter
         }
-        return c;	 
+        return c;
 }
 int compare2(char *str1,char *str2,int n)//used for comparing only n bytes of str1 and str2
 {
@@ -117,6 +117,7 @@ int compare(const char *str1,const char *str2)//regular compare for entire strin
 	}
 
 }
+
 int main()
 {
 
