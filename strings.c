@@ -137,7 +137,7 @@ int main()
 	do{
 	printf("\n0. Exit\n1.Accept String\n2.Display String\n3.Get length of string\n4.Copy string\n5.Equal strings?\n6.Reverse string\n7.Palindrome?\n8.Substring?\n9.Concatenate\n10. Compare 2 strings\n");//Menu
 	scanf("%d",&choice);
-	char str1[20];
+	char str1[20],ch='a';
 	switch(choice)
 	{
 		case 1: accept(str);break;//Accept String
@@ -196,9 +196,8 @@ int main()
 
 		case 11:printf("Enter string:");
 						accept(str);
-						printf("Enter character:\n");
-						char ch;
-						scanf("%c",&ch);
+						printf("\nEnter character:\n");
+						scanf(" %c",&ch);//add whitespace before %c so it ignores a leading character from previous commands
 						printf("\n%c is present %d times in %s.",ch,freq(str,ch),str);
 						break;
 
