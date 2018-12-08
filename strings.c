@@ -6,6 +6,8 @@ Subject: DS-I
 */
 #include<stdio.h>
 #include<string.h>//for replace() function only
+#include<stdlib.h>//for replace() function only
+
 void accept(char *str)//to accept string
 {
 	scanf("%s",str);
@@ -178,7 +180,7 @@ int main()
 	do{
 	printf("\n0. Exit\n1.Accept String\n2.Display String\n3.Get length of string\n4.Copy string\n5.Equal strings?\n6.Reverse string\n7.Palindrome?\n8.Substring?\n9.Concatenate\n10. Compare 2 strings\n11. Find Frequency of character in string\n12. Replace a substring by another string\n");//Menu
 	scanf("%d",&choice);
-	char str1[20],ch='a';
+	char str1[20],str2[20],ch='a';
 	switch(choice)
 	{
 		case 1: accept(str);break;//Accept String
@@ -244,7 +246,7 @@ int main()
 
 		case 12:printf("\nEnter original FULL string");
 						accept(str);
-					ss:printf("\nEnter substring:")
+					ss:printf("\nEnter substring:");
 						accept(str1);
 						if(match2(str,str1,1)>0)//if str1 is a substring of str
 						{
