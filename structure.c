@@ -129,7 +129,7 @@ void bubblesort(student stude[],int n)
     k++;printf("\n\n*****PASS %d",k);
     for(int j=0;j<n-1-i;j++)
     {
-      if(stude[j+1].roll<stude[j].roll)//swap adjacent values
+      if(temp[j+1].roll<temp[j].roll)//swap adjacent values
       {
         student tempr= temp[j];
         temp[j]=temp[j+1];
