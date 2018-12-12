@@ -73,7 +73,7 @@ int bsearchrec(student stude[],int l,int u,int r,int n)//performs binary search 
 {
 	if(l<=u)
 	{
-		int mid = l + (r - l)/2;
+		int mid = l + (u - l)/2;
 		
 		if (stude[mid].roll == r)  return mid; 
 		
