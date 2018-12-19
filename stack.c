@@ -29,3 +29,4 @@ void push(stack s, char elem[20])
     s.pile[++top]=elem;
   }
 }
+char[] pop
