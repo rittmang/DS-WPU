@@ -43,6 +43,14 @@ char* pop(stack *s)
     return popcorn;
   }
 }
+void display(stack* s)
+{
+  for(int k=s->top;i>-1;i--)
+    {
+      printf("%s\n",s->pile[i]);
+    }
+
+}
 int main()
 {
   printf("\n\nSTACK OPERATIONS\n");
