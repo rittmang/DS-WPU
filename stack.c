@@ -44,5 +44,25 @@ char[] pop(stack s)
 int main()
 {
   printf("\n\nSTACK OPERATIONS\n");
-  printf("0.Exit\n1.Push\n2.Pop\n3.Display");
+  int choice;
+  stack s1;
+
+  do{
+      printf("0.Exit\n1.Push\n2.Pop\n3.Display");
+      scanf("%n",&choice);
+      char elem[MAX];
+      switch(choice);
+      {
+        case 1: printf("Enter string:");
+                scanf("%s",&elem);
+                push(s1,elem);
+                break;
+
+        case 2: printf("Popped Element:%s",pop(s1));
+                break;
+      }
+
+  }while(choice!=0);
+
+
 }
