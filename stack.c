@@ -1,24 +1,25 @@
-#define MAX 30;
+#define MAX 30
 #include<stdio.h>
+#include<string.h>
 
 typedef struct{
       char pile[MAX][MAX];
-      int top=-1;
+      int top;
   }stack;
 
-int  isFull(stack s)
+int  isFull(stack *s)
 {
-  if(s.top==MAX-1)
+  if(s->top==MAX-1)
     return 1;
   else return 0;
 }
-int isEmpty(stack s)
+int isEmpty(stack *s)
 {
-  if(s.top==-1)
+  if(s->top==-1)
     return 1;
   else return 0;
 }
-void push(stack s, char elem[20])
+void push(stack *s, char elem[20])
 {
   if(isFull(s))
   {
@@ -26,10 +27,10 @@ void push(stack s, char elem[20])
   }
   else
   {
-    s.pile[++s.top]=elem;
+    strcpy(s->pile[++s->top],elem);
   }
 }
-char[] pop(stack s)
+char* pop(stack *s)
 {
   if(isEmpty(s))
   {
@@ -37,7 +38,8 @@ char[] pop(stack s)
   }
   else
   {
-    char[] popcorn=s.pile[s.top--];
+    char* popcorn;
+    strcpy(popcorn,s->pile[s->top--]);
     return popcorn;
   }
 }
@@ -49,16 +51,16 @@ int main()
 
   do{
       printf("0.Exit\n1.Push\n2.Pop\n3.Display");
-      scanf("%n",&choice);
+      scanf("%d",&choice);
       char elem[MAX];
-      switch(choice);
+      switch(choice)
       {
         case 1: printf("Enter string:");
                 scanf("%s",&elem);
-                push(s1,elem);
+                push(&s1,elem);
                 break;
 
-        case 2: printf("Popped Element:%s",pop(s1));
+        case 2: printf("Popped Element:%s",pop(&s1));
                 break;
       }
 
