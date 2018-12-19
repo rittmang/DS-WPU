@@ -57,13 +57,45 @@ void display()
     }
     printf("\nTOP=%d",top);
 }
-void posin(char e[20])
+void posin(char e[MAX])
 {
-  char str[20];
-//  for(int i=0;e[i]!='\0';i++)
-  //{
+  char str[MAX],op1[MAX],op2[MAX];
+  for(int i=0;e[i]!='\0';i++)
+  {
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      {
+        strcpy(op1,pop());
+        strcpy(op2,pop());
+        str[0]='(';
+        str[1]='\0';
 
-  //}
+        strcat(str,op2);
+
+        int l=strlen(str);
+        str[l]=exp[i];
+        str[l+1]='\0';
+        strcat(str,op1);
+
+        l=strlen(str);
+        str[l]=')';
+        str[l+1]='\0';
+
+        top++;
+        strcpy(stack[top],str);
+      }
+      else
+      {
+        strcpy(st,"");
+        top++;
+
+        char st[20];
+        st[0]=exp[i];
+        st[1]='\0';
+        strcpy(pile[top],st);
+      }
+  }
+  str1=pop();
+  printf("%s",str1);
 }
 int main()
 {
