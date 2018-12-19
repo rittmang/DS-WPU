@@ -41,3 +41,8 @@ char[] pop(stack s)
     return popcorn;
   }
 }
+int main()
+{
+  printf("\n\nSTACK OPERATIONS\n");
+  printf("0.Exit\n1.Push\n2.Pop\n3.Display");
+}
