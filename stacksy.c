@@ -26,11 +26,13 @@ void push(char elem[20])
   }
   else
   {
-    strcpy(pile[++top],elem);
+    top++;
+    strcpy(pile[top],elem);
   }
 }
 char* pop()
 {
+  char popcorn[MAX];
   printf("In function");
   if(isEmpty(pile))
   {
@@ -38,29 +40,41 @@ char* pop()
   }
   else
   {
-    char* popcorn;
-    strcpy(popcorn,pile[top--]);
-    printf("TOP=%d",top);
+    strcpy(popcorn,pile[top]);
+    printf("\nTOP=%d",top);
+    printf("\nPOPPED=%s\n",popcorn);
+    top--;
+
     return popcorn;
   }
 }
 void display()
 {
-  for(int k=top;k>=0;k--)
+  int temp=top;
+  for(int k=temp;k>=0;k--)
     {
       printf("%s\n",pile[k]);
     }
+    printf("\nTOP=%d",top);
+}
+void posin(char e[20])
+{
+  char str[20];
+//  for(int i=0;e[i]!='\0';i++)
+  //{
 
+  //}
 }
 int main()
 {
   printf("\n\nSTACK OPERATIONS\n");
   int choice;
-
+  char exp[20];
+  char elem[MAX];
   do{
       printf("\n0.Exit\n1.Push\n2.Pop\n3.Display");
       scanf("%d",&choice);
-      char* elem;
+
       switch(choice)
       {
         case 1: printf("\n\nEnter string:");
