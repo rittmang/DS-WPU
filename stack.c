@@ -2,7 +2,7 @@
 #include<stdio.h>
 
 typedef struct{
-      char pile[MAX];
+      char pile[MAX][MAX];
       int top=-1;
   }stack;
 
@@ -26,7 +26,18 @@ void push(stack s, char elem[20])
   }
   else
   {
-    s.pile[++top]=elem;
+    s.pile[++s.top]=elem;
   }
 }
-char[] pop
+char[] pop(stack s)
+{
+  if(isEmpty(s))
+  {
+    printf("Stack Underflow.");return "-999";
+  }
+  else
+  {
+    char[] popcorn=s.pile[s.top--];
+    return popcorn;
+  }
+}
