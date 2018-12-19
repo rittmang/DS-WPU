@@ -3,7 +3,7 @@
 
 typedef struct{
       char pile[MAX];
-      int top;
+      int top=-1;
   }stack;
 
 int  isFull(stack s)
@@ -18,4 +18,14 @@ int isEmpty(stack s)
     return 1;
   else return 0;
 }
-void push(stack s,)
+void push(stack s, char elem[20])
+{
+  if(isFull(s))
+  {
+    printf("Stack OverFlow.");return;
+  }
+  else
+  {
+    s.pile[++top]=elem;
+  }
+}
