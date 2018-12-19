@@ -50,7 +50,7 @@ char* pop(stack *s)
 }
 void display(stack* s)
 {
-  for(int k=s->top;k>-1;k--)
+  for(int k=s->top;k>=0;k--)
     {
       printf("%s\n",s->pile[k]);
     }
