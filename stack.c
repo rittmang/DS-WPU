@@ -32,22 +32,27 @@ void push(stack *s, char elem[20])
 }
 char* pop(stack *s)
 {
+  printf("In function");
   if(isEmpty(s))
   {
     printf("Stack Underflow.");return "-999";
   }
   else
   {
+    printf("In POPPING");
     char* popcorn;
-    strcpy(popcorn,s->pile[s->top--]);
+    strcpy(popcorn,s->pile[s->top]);
+    printf("STRING COPIED to popcorn");
+    s->top--;
+    printf("TOP=%d",s->top);
     return popcorn;
   }
 }
 void display(stack* s)
 {
-  for(int k=s->top;i>-1;i--)
+  for(int k=s->top;k>-1;k--)
     {
-      printf("%s\n",s->pile[i]);
+      printf("%s\n",s->pile[k]);
     }
 
 }
@@ -56,7 +61,7 @@ int main()
   printf("\n\nSTACK OPERATIONS\n");
   int choice;
   stack s1;
-
+  s1.top=-1;
   do{
       printf("\n0.Exit\n1.Push\n2.Pop\n3.Display");
       scanf("%d",&choice);
