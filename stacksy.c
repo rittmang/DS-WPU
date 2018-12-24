@@ -32,7 +32,7 @@ void push(char elem[20])
 }
 char* pop()
 {
-  char popcorn[MAX];
+  char *popcorn;
   printf("In function");
   if(isEmpty(pile))
   {
@@ -44,7 +44,7 @@ char* pop()
     printf("\nTOP=%d",top);
     printf("\nPOPPED=%s\n",popcorn);
     top--;
-
+    //popcorn=malloc(3);
     return popcorn;
   }
 }
@@ -59,7 +59,7 @@ void display()
 }
 void posin(char e[MAX])
 {
-  char str[MAX],op1[MAX],op2[MAX];
+  char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
   for(int i=0;e[i]!='\0';i++)
   {
       if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
@@ -72,7 +72,7 @@ void posin(char e[MAX])
         strcat(str,op2);
 
         int l=strlen(str);
-        str[l]=exp[i];
+        str[l]=e[i];
         str[l+1]='\0';
         strcat(str,op1);
 
@@ -81,7 +81,7 @@ void posin(char e[MAX])
         str[l+1]='\0';
 
         top++;
-        strcpy(stack[top],str);
+        strcpy(pile[top],str);
       }
       else
       {
@@ -89,12 +89,12 @@ void posin(char e[MAX])
         top++;
 
         char st[20];
-        st[0]=exp[i];
+        st[0]=e[i];
         st[1]='\0';
         strcpy(pile[top],st);
       }
   }
-  str1=pop();
+  strcpy(str1,pop());
   printf("%s",str1);
 }
 int main()
