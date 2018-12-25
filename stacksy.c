@@ -91,23 +91,14 @@ void pospre(char e[MAX])
   {
       if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
       {
-        strcpy(op1,pop());
-        strcpy(op2,pop());
-        //str[0]='(';
-        //str[1]='\0';
+        strcpy(op1,pop());//get b
+        strcpy(op2,pop());//get a
 
-        //int l=strlen(str);
-        str[0]=e[i];
-        str[1]='\0';
+        str[0]=e[i];      //get +
+        str[1]='\0';      //str=+
 
-        strcat(str,op2);
-        strcat(str,op1);
-
-
-
-      //  l=strlen(str);
-        //str[l]=')';
-        //str[l+1]='\0';
+        strcat(str,op2);  //str=+a
+        strcat(str,op1);  //str=+ab
 
         top++;
         strcpy(pile[top],str);
