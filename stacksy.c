@@ -33,7 +33,6 @@ void push(char elem[20])
 char* pop()
 {
   char *popcorn;
-  //printf("In function");
   if(isEmpty(pile))
   {
     printf("Stack Underflow.");return "-999";
@@ -41,10 +40,7 @@ char* pop()
   else
   {
     strcpy(popcorn,pile[top]);
-    //printf("\nTOP=%d",top);
-    //printf("\nPOPPED=%s\n",popcorn);
     top--;
-    //popcorn=malloc(3);
     return popcorn;
   }
 }
@@ -77,7 +73,6 @@ void posin(char e[MAX])
       }
       else
       {
-        //strcpy(st,"");
         top++;
 
         char st[20];
@@ -89,6 +84,7 @@ void posin(char e[MAX])
   strcpy(str1,pop());
   printf("%s",str1);
 }
+
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
