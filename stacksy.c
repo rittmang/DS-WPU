@@ -159,13 +159,48 @@ void prein(char e[MAX])
   printf("Infix expression=%s\n",str1);
 }
 
+void prepost(char e[MAX])
+{
+  char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
+  int l1=strlen(e);
+  for(int i=l1;i>=0;i--)
+  {
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      {
+        strcpy(op1,pop());
+        strcpy(op2,pop());
+
+        str[0]='\0';//as was appending to str of previous iteration.
+        strcat(str,op1);strcat(str,op2);
+
+        int l=strlen(str);
+        str[l]=e[i];
+        str[l+1]='\0';
+
+        top++;
+        strcpy(pile[top],str);
+      }
+      else
+      {
+        top++;
+
+        char st[20];
+        st[0]=e[i];
+        st[1]='\0';
+        strcpy(pile[top],st);
+      }
+  }
+  strcpy(str1,pop());
+  printf("Postfix expression=%s\n",str1);
+}
+
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
   int choice;
   char exp[MAX];
   do{
-      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n3. Prefix to Infix\n");
+      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n3. Prefix to Infix\n4. Prefix to Postfix\n");
       scanf("%d",&choice);
 
       switch(choice)
@@ -185,6 +220,12 @@ int main()
         case 3: printf("\n\nEnter prefix expression:");
                 scanf("%s",exp);
                 prein(exp);
+                printf("\n-------------\n");
+                break;
+
+        case 4: printf("\n\nEnter prefix expression:");
+                scanf("%s",exp);
+                prepost(exp);
                 printf("\n-------------\n");
                 break;
       }
