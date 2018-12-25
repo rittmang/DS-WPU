@@ -82,7 +82,7 @@ void posin(char e[MAX])
       }
   }
   strcpy(str1,pop());
-  printf("%s",str1);
+  printf("Infix expression=%s\n",str1);
 }
 
 int main()
@@ -91,14 +91,20 @@ int main()
   int choice;
   char exp[MAX];
   do{
-      printf("\n0.Exit\n1.Postfix to Infix\n");
+      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix");
       scanf("%d",&choice);
 
       switch(choice)
       {
-        case 1: printf("\n\nEnter expression:");
+        case 1: printf("\n\nEnter postfix expression:");
                 scanf("%s",exp);
                 posin(exp);
+                printf("\n-------------\n");
+                break;
+
+        case 2: printf("\n\nEnter postfix expression:");
+                scanf("%s",exp);
+                pospre(exp);
                 printf("\n-------------\n");
                 break;
       }
