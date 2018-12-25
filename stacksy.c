@@ -89,10 +89,6 @@ void posin(char e[MAX])
   strcpy(str1,pop());
   printf("%s",str1);
 }
-void accepts(char *str)
-{
-  scanf("%s",str);
-}
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
