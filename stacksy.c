@@ -96,14 +96,12 @@ int main()
 
       switch(choice)
       {
-        case 1: printf("HELLO2");
-                printf("\n\nEnter expression:");
+        case 1: printf("\n\nEnter expression:");
                 scanf("%s",exp);
                 posin(exp);
                 printf("\n-------------\n");
                 break;
       }
-
   }while(choice!=0);
 
 }
