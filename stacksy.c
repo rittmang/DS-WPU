@@ -102,7 +102,6 @@ int main()
                 posin(exp);
                 printf("\n-------------\n");
                 break;
-
       }
 
   }while(choice!=0);
