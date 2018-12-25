@@ -84,14 +84,54 @@ void posin(char e[MAX])
   strcpy(str1,pop());
   printf("Infix expression=%s\n",str1);
 }
+void pospre(char e[MAX])
+{
+  char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
+  for(int i=0;e[i]!='\0';i++)
+  {
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      {
+        strcpy(op1,pop());
+        strcpy(op2,pop());
+        //str[0]='(';
+        //str[1]='\0';
 
+        //int l=strlen(str);
+        str[0]=e[i];
+        str[1]='\0';
+
+        strcat(str,op2);
+        strcat(str,op1);
+
+
+
+      //  l=strlen(str);
+        //str[l]=')';
+        //str[l+1]='\0';
+
+        top++;
+        strcpy(pile[top],str);
+      }
+      else
+      {
+        top++;
+
+        char st[20];
+        st[0]=e[i];
+        st[1]='\0';
+        strcpy(pile[top],st);
+      }
+  }
+  strcpy(str1,pop());
+  printf("Prefix expression=%s\n",str1);
+}
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
   int choice;
   char exp[MAX];
   do{
-      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix");
+      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n");
       scanf("%d",&choice);
 
       switch(choice)
