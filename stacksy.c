@@ -33,7 +33,7 @@ void push(char elem[20])
 char* pop()
 {
   char *popcorn;
-  printf("In function");
+  //printf("In function");
   if(isEmpty(pile))
   {
     printf("Stack Underflow.");return "-999";
@@ -41,22 +41,14 @@ char* pop()
   else
   {
     strcpy(popcorn,pile[top]);
-    printf("\nTOP=%d",top);
-    printf("\nPOPPED=%s\n",popcorn);
+    //printf("\nTOP=%d",top);
+    //printf("\nPOPPED=%s\n",popcorn);
     top--;
     //popcorn=malloc(3);
     return popcorn;
   }
 }
-void display()
-{
-  int temp=top;
-  for(int k=temp;k>=0;k--)
-    {
-      printf("%s\n",pile[k]);
-    }
-    printf("\nTOP=%d",top);
-}
+
 void posin(char e[MAX])
 {
   char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
@@ -85,7 +77,7 @@ void posin(char e[MAX])
       }
       else
       {
-        strcpy(st,"");
+        //strcpy(st,"");
         top++;
 
         char st[20];
@@ -97,32 +89,30 @@ void posin(char e[MAX])
   strcpy(str1,pop());
   printf("%s",str1);
 }
+void accepts(char *str)
+{
+  scanf("%s",str);
+}
 int main()
 {
-  printf("\n\nSTACK OPERATIONS\n");
+  printf("\n\nEXPRESSION CONVERSIONS\n");
   int choice;
-  char exp[20];
-  char elem[MAX];
+  char exp[MAX];
   do{
-      printf("\n0.Exit\n1.Push\n2.Pop\n3.Display");
+      printf("\n0.Exit\n1.Postfix to Infix\n");
       scanf("%d",&choice);
 
       switch(choice)
       {
-        case 1: printf("\n\nEnter string:");
-                scanf("%s",elem);
-                push(elem);
+        case 1: printf("HELLO2");
+                printf("\n\nEnter expression:");
+                scanf("%s",exp);
+                posin(exp);
+                printf("\n-------------\n");
                 break;
 
-        case 2: printf("\n\nPopped Element:%s",pop());
-                break;
-
-        case 3: printf("\n\nDisplaying Pile:\n");
-                display();
-                break;
       }
 
   }while(choice!=0);
-
 
 }
