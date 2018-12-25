@@ -1,7 +1,7 @@
 #define MAX 30
 #include<stdio.h>
 #include<string.h>
-
+#include<ctype.h>
 
 char pile[MAX][MAX];
 int top=-1;
@@ -194,13 +194,63 @@ void prepost(char e[MAX])
   printf("Postfix expression=%s\n",str1);
 }
 
+//-------------------------------------------
+//INFIX SECTION BEGINS, USING A CHARACTER STACK, INSTEAD OF A STRING STACK
+
+int priority(char x)
+{
+    if(x == '(')
+        return 0;
+    if(x == '+' || x == '-')
+        return 1;
+    if(x == '*' || x == '/')
+        return 2;
+}
+
+char stack[MAX];
+int top2=-1;
+
+void inpos(char e[MAX])
+{
+    char x;int i=0;
+
+    while(e[i] != '\0')
+    {
+        if(isalnum(e[i]))
+            printf("%c",e[i]);
+
+        else if(e[i] == '(')
+        {
+          top2++;
+          stack[top2]=e[i];
+        }
+        else if(e[i] == ')' && top2>=0)
+        {
+            while((x=stack[top2--]) != '(')
+                printf("%c", x);
+        }
+        else if(top2>=0)
+        {
+            while(priority(stack[top2]) >= priority(e[i]))
+                printf("%c",stack[top2--]);
+            //push(*e);
+            top2++;stack[top2]=e[i];
+        }
+        i++;
+    }
+    while(top2 != -1)
+    {
+        printf("%c",stack[top2--]);
+    }
+}
+
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
   int choice;
   char exp[MAX];
   do{
-      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n3. Prefix to Infix\n4. Prefix to Postfix\n");
+      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n3. Prefix to Infix\n4. Prefix to Postfix\n5. Infix to Postfix\n");
       scanf("%d",&choice);
 
       switch(choice)
@@ -226,6 +276,12 @@ int main()
         case 4: printf("\n\nEnter prefix expression:");
                 scanf("%s",exp);
                 prepost(exp);
+                printf("\n-------------\n");
+                break;
+
+        case 5: printf("\n\nEnter infix expression (with brackets):");
+                scanf("%s",exp);
+                inpos(exp);
                 printf("\n-------------\n");
                 break;
       }
