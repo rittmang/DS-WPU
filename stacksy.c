@@ -264,7 +264,7 @@ void inpre(char e[MAX])
         if(isalnum(e[l]))
             result[i++]=e[l];
 
-        else if(e[l] == ')')
+        else if(e[l] == ')' && top2>=0)
         {
           top2++;
           stack[top2]=e[l];
@@ -272,8 +272,6 @@ void inpre(char e[MAX])
         else if(e[l] == '(' && top2>=0)
         {
             while((x=stack[top2--]) != ')')
-                //printf("%c", x);for(int i=0;i<strlen(result);i++)
-      printf("%c",result[i]);
                 result[i++]=x;
         }
         else if(top2>=0)
@@ -292,8 +290,8 @@ void inpre(char e[MAX])
         result[i++]=stack[top2--];
     }
     //result[++i]='\0';
-    printf("%s",result);
-    for(int i=strlen(result)-1;i>=0;i--)
+   printf("%s",result);
+    for(int i=strlen(result)-1;i>-1;i--)
       printf("%c",result[i]);
 
 }
