@@ -19,7 +19,7 @@ void accept(int mat[max][max],int r,int c)//accepting elements of matrix
     }
   }
 }
-void display(int mat[max][max],int r,int c)
+void display(int mat[max][max],int r,int c)//displaying elements of matrix
 {
   printf("Printing elements:\n");
   for(int i=0;i<r;i++)
@@ -31,7 +31,7 @@ void display(int mat[max][max],int r,int c)
     printf("\n");
   }
 }
-void display2(int mat[max][3],int r,int c)
+void display2(int mat[max][3],int r,int c)//displaying elements of sparse matrix
 {
   for(int i=0;i<r;i++)
   {
@@ -50,7 +50,7 @@ void compact(int mat[max][max],int compmat[max][3],int r,int c,int displ)//displ
   {
     for(int j=0;j<c;j++)
     {
-      if(mat[i][j]!=0)
+      if(mat[i][j]!=0)//for nonzero elements
       {
         nonzero++;
         compmat[nonzero][0]=i;
@@ -65,7 +65,7 @@ void compact(int mat[max][max],int compmat[max][3],int r,int c,int displ)//displ
   else return;
 }
 
-void transpose(int mat[max][3],int transp[max][3])
+void transpose(int mat[max][3],int transp[max][3])//forming tranpose of sparse matrix
 {
   int n,currentb;
 
@@ -94,7 +94,7 @@ void transpose(int mat[max][3],int transp[max][3])
 }
 
 
-void fasttranspose(int mat[max][3],int transp[max][3])
+void fasttranspose(int mat[max][3],int transp[max][3])//forming transpose of sparse matrix using fast transpose matrix
 {
   int rowTerms[max],startingPos[max];//max here would mean, number of columns in original matrix never exceeds matrix
   int numCols=mat[0][1],numTerms=mat[0][2];
@@ -224,7 +224,7 @@ int main()
   display(mat,r,c);
   printf("-----------\nCompact Form:\n");
   compact(mat,compmat,r,c,1);
-  int choice=0;
+  int choice=0;//get choice
   //-----------------------------------------------------------------------------
 
   do{
