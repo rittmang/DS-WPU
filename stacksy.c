@@ -233,7 +233,7 @@ void inpos(char e[MAX])
         {
             while(priority(stack[top2]) >= priority(e[i]))
                 printf("%c",stack[top2--]);
-            //push(*e);
+                
             top2++;stack[top2]=e[i];
         }
         i++;
