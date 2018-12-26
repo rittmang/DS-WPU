@@ -14,7 +14,7 @@ Assignment: 4 (Expression Conversion using STACK)
 char pile[MAX][MAX];
 int top=-1;
 
-int  isFull()
+int isFull()
 {
   if(top==MAX-1)
     return 1;
@@ -213,6 +213,8 @@ int priority(char x)
         return 1;
     if(x == '*' || x == '/')
         return 2;
+    if(x == ')')
+        return 3;
 }
 
 char stack[MAX];
@@ -251,15 +253,16 @@ void inpos(char e[MAX])
         printf("%c",stack[top2--]);
     }
 }
-/*void inpre(char e[MAX])
+void inpre(char e[MAX])
 {
     char x;int i=0;
     int l=strlen(e);
+    char result[MAX];
 
-    while(l != 0)
+    while(l >= 0)
     {
         if(isalnum(e[l]))
-            printf("%c",e[l]);
+            result[i++]=e[l];
 
         else if(e[l] == ')')
         {
@@ -268,13 +271,16 @@ void inpos(char e[MAX])
         }
         else if(e[l] == '(' && top2>=0)
         {
-            while((x=stack[top2--]) != '(')
-                printf("%c", x);
+            while((x=stack[top2--]) != ')')
+                //printf("%c", x);for(int i=0;i<strlen(result);i++)
+      printf("%c",result[i]);
+                result[i++]=x;
         }
         else if(top2>=0)
         {
-            while(priority(stack[top2]) <= priority(e[l]))
-                printf("%c",stack[top2--]);
+            while(priority(stack[top2]) >= priority(e[l])){
+                //printf("%c",stack[top2--]);
+                result[i++]=stack[top2--];}
 
             top2++;stack[top2]=e[l];
         }
@@ -282,9 +288,15 @@ void inpos(char e[MAX])
     }
     while(top2 != -1)
     {
-        printf("%c",stack[top2--]);
+        //printf("%c",stack[top2--]);
+        result[i++]=stack[top2--];
     }
-}*/
+    //result[++i]='\0';
+    printf("%s",result);
+    for(int i=strlen(result)-1;i>=0;i--)
+      printf("%c",result[i]);
+
+}
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
