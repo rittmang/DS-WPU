@@ -251,7 +251,7 @@ void inpos(char e[MAX])
         printf("%c",stack[top2--]);
     }
 }
-void inpre(char e[MAX])
+/*void inpre(char e[MAX])
 {
     char x;int i=0;
     int l=strlen(e);
@@ -261,37 +261,37 @@ void inpre(char e[MAX])
         if(isalnum(e[l]))
             printf("%c",e[l]);
 
-        else if(e[i] == ')')
+        else if(e[l] == ')')
         {
           top2++;
-          stack[top2]=e[i];
+          stack[top2]=e[l];
         }
-        else if(e[i] == '(' && top2>=0)
+        else if(e[l] == '(' && top2>=0)
         {
             while((x=stack[top2--]) != '(')
                 printf("%c", x);
         }
         else if(top2>=0)
         {
-            while(priority(stack[top2]) >= priority(e[i]))
+            while(priority(stack[top2]) <= priority(e[l]))
                 printf("%c",stack[top2--]);
 
-            top2++;stack[top2]=e[i];
+            top2++;stack[top2]=e[l];
         }
-        i++;
+        l--;
     }
     while(top2 != -1)
     {
         printf("%c",stack[top2--]);
     }
-}
+}*/
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
   int choice;
   char exp[MAX];
   do{
-      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n3. Prefix to Infix\n4. Prefix to Postfix\n5. Infix to Postfix\n");
+      printf("\n0.Exit\n1.Postfix to Infix\n2.Postfix to Prefix\n3. Prefix to Infix\n4. Prefix to Postfix\n5. Infix to Postfix\n6. Infix to Prefix\n");
       scanf("%d",&choice);
 
       switch(choice)
@@ -325,6 +325,13 @@ int main()
                 inpos(exp);
                 printf("\n-------------\n");
                 break;
+
+        case 6: printf("\n\nEnter infix expression (with brackets):");
+                scanf("%s",exp);
+                inpre(exp);
+                printf("\n-------------\n");
+                break;
+
       }
   }while(choice!=0);
 
