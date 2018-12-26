@@ -1,6 +1,14 @@
+/*
+Name: Ritom Gupta
+Class: S.Y B.Tech CSE-D
+Batch: D4
+Roll: 203460
+Assignment: 2 (Sparse Matrix Operations)
+*/
+
 #define max 50
 #include<stdio.h>
-void accept(int mat[max][max],int r,int c)
+void accept(int mat[max][max],int r,int c)//accepting elements of matrix
 {
   printf("Enter elements:\n");
   for(int i=0;i<r;i++)

@@ -1,3 +1,11 @@
+/*
+Name: Ritom Gupta
+Class: S.Y B.Tech CSE-D
+Batch: D4
+Roll: 203460
+Assignment: 4 (Expression Conversion using STACK)
+*/
+
 #define MAX 30
 #include<stdio.h>
 #include<string.h>
@@ -233,7 +241,7 @@ void inpos(char e[MAX])
         {
             while(priority(stack[top2]) >= priority(e[i]))
                 printf("%c",stack[top2--]);
-                
+
             top2++;stack[top2]=e[i];
         }
         i++;
@@ -243,7 +251,40 @@ void inpos(char e[MAX])
         printf("%c",stack[top2--]);
     }
 }
+void inpre(char e[MAX])
+{
+    char x;int i=0;
+    int l=strlen(e);
 
+    while(l != 0)
+    {
+        if(isalnum(e[l]))
+            printf("%c",e[l]);
+
+        else if(e[i] == ')')
+        {
+          top2++;
+          stack[top2]=e[i];
+        }
+        else if(e[i] == '(' && top2>=0)
+        {
+            while((x=stack[top2--]) != '(')
+                printf("%c", x);
+        }
+        else if(top2>=0)
+        {
+            while(priority(stack[top2]) >= priority(e[i]))
+                printf("%c",stack[top2--]);
+
+            top2++;stack[top2]=e[i];
+        }
+        i++;
+    }
+    while(top2 != -1)
+    {
+        printf("%c",stack[top2--]);
+    }
+}
 int main()
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
