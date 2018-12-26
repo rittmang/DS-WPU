@@ -53,7 +53,7 @@ void compact(int mat[max][max],int compmat[max][3],int r,int c,int displ)//displ
   }
   compmat[0][2]=nonzero;
   if(displ=1)
-    {printf("displ=1");display2(compmat,nonzero+1,3);}
+    {display2(compmat,nonzero+1,3);}
   else return;
 }
 
@@ -216,12 +216,27 @@ int main()
   display(mat,r,c);
   printf("-----------\nCompact Form:\n");
   compact(mat,compmat,r,c,1);
-  printf("---------------\nTranspose:\n");
-  transpose(compmat,transp);
-  printf("---------------\nFast Transpose:\n");
-  fasttranspose(compmat,fast_transp);
-  printf("---------------\nAdding Input Matrix to:\n");
-  add(compmat,r,c);
+  int choice=0;
+  //-----------------------------------------------------------------------------
 
+  do{
+      printf("\n0. Exit\t1. Transpose\t2. Fast Transpose\t3. Add Input Matrix to\n");
+      scanf("%d",&choice);
+      switch(choice)
+      {
+        case 1:   printf("---------------\nTranspose:\n");
+                  transpose(compmat,transp);
+                  break;
+
+        case 2:   printf("---------------\nFast Transpose:\n");
+                  fasttranspose(compmat,fast_transp);
+                  break;
+
+        case 3:   printf("---------------\nAdding Input Matrix to:\n");
+                  add(compmat,r,c);
+                  break;
+
+  }
+}while(choice!=0);
   return 0;
 }
