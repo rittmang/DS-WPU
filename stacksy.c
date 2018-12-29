@@ -264,14 +264,14 @@ void inpre(char e[MAX])
         if(isalnum(e[l]))
             result[i++]=e[l];
 
-        else if(e[l] == ')' && top2>=0)
+        else if(e[l] == '(' && top2>=0)
         {
           top2++;
           stack[top2]=e[l];
         }
-        else if(e[l] == '(' && top2>=0)
+        else if(e[l] == ')' && top2>=0)
         {
-            while((x=stack[top2--]) != ')')
+            while((x=stack[top2--]) != '(')
                 result[i++]=x;
         }
         else if(top2>=0)
