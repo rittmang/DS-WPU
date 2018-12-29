@@ -23,7 +23,9 @@ int dequeue(Queue* q)
     {printf("Queue Underflow");return -999;}
   else
   {
+
     int val=q->N[q->f++];
+    if(q->f==q->r+1){q->f=-1;q->r=-1;}
     return val;
   }
 }
