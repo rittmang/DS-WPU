@@ -14,7 +14,7 @@ Assignment: 4 (Expression Conversion using STACK)
 char pile[MAX][MAX];//STACK ARRAY
 int top=-1;//initial condition
 
-int isFull()
+int isFull()//Say
 {
   if(top==MAX-1)
     return 1;
@@ -204,18 +204,39 @@ void prepost(char e[MAX])
 //-------------------------------------------
 //INFIX SECTION BEGINS, USING A CHARACTER STACK, INSTEAD OF A STRING STACK
 
-int priority(char x)
+int ICP(char x,int n)
 {
-    if(x == '(')
-        return 0;
-    if(x == '+' || x == '-')
-        return 1;
-    if(x == '*' || x == '/')
-        return 2;
-    if(x == ')')
-        return 3;
-}
 
+    if(x == '+' || x == '-')
+        return 2;
+    if(x == '*' || x == '/')
+        return 3;
+    if(x == ')' || x=='(')
+        return  4;
+    if(x=='^')
+    {
+      if(n==0)return 5;
+      else return 6;
+    }
+    else return -1;
+}
+int ISP(char x,int n)
+{
+  if(x == ')' || x=='(')
+      return  0;
+    if(x == '+' || x == '-')
+        return 2;
+    if(x == '*' || x == '/')
+        return 3;
+    if(x == ')' || x=='(')
+        return  4;
+    if(x=='^')
+      {
+          if(n==0)return 6;
+          else return 5;
+      }
+    else return -1;
+}
 char stack[MAX];
 int top2=-1;
 
@@ -240,7 +261,7 @@ void inpos(char e[MAX])
         }
         else if(top2>=0)
         {
-            while(priority(stack[top2]) >= priority(e[i]))
+            while(ISP(stack[top2],1) >= ICP(e[i],1))
                 printf("%c",stack[top2--]);
 
             top2++;stack[top2]=e[i];
@@ -257,25 +278,25 @@ void inpre(char e[MAX])
     char x;int i=0;
     int l=strlen(e);
     char result[MAX];
-
+    l--;
     while(l >= 0)
     {
         if(isalnum(e[l]))
             result[i++]=e[l];
 
-        else if(e[l] == '(' && top2>=0)
+        else if(e[l] == ')')
         {
           top2++;
           stack[top2]=e[l];
         }
-        else if(e[l] == ')' && top2>=0)
+        else if(e[l] == '(')
         {
-            while((x=stack[top2--]) != '(')
+            while((x=stack[top2--]) != ')')
                 result[i++]=x;
         }
-        else if(top2>=0)
+        else
         {
-            while(priority(stack[top2]) >= priority(e[l])){
+            while(ISP(stack[top2],0) >= ICP(e[l],0)){
                 //printf("%c",stack[top2--]);
                 result[i++]=stack[top2--];}
 
@@ -283,14 +304,14 @@ void inpre(char e[MAX])
         }
         l--;
     }
-    while(top2 != -1)
+    while(top2>=0)
     {
-        //printf("%c",stack[top2--]);
+
         result[i++]=stack[top2--];
     }
     //result[++i]='\0';
-   printf("%s",result);
-    for(int i=strlen(result)-1;i>-1;i--)
+
+    for(int i=strlen(result)-1;i>=0;i--)
       printf("%c",result[i]);
 
 }
