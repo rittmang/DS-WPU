@@ -11,22 +11,22 @@ Assignment: 4 (Expression Conversion using STACK)
 #include<string.h>
 #include<ctype.h>
 
-char pile[MAX][MAX];//STACK ARRAY
-int top=-1;//initial condition
+char pile[MAX][MAX];  //STACK ARRAY
+int top=-1;           //initial condition
 
-int isFull()//Say
+int isFull()          //Returns 1 if pile is full else 0
 {
   if(top==MAX-1)
     return 1;
   else return 0;
 }
-int isEmpty()
+int isEmpty()         //Returns 1 if pile is empty else 0
 {
   if(top==-1)
     return 1;
   else return 0;
 }
-void push(char elem[20])
+void push(char elem[20])    //Not really used
 {
   if(isFull(pile))
   {
@@ -38,7 +38,7 @@ void push(char elem[20])
     strcpy(pile[top],elem);
   }
 }
-char* pop()
+char* pop()                //pops string element
 {
   char *popcorn;
   if(isEmpty(pile))
@@ -53,43 +53,43 @@ char* pop()
   }
 }
 
-void posin(char e[MAX])
+void posin(char e[MAX])//converts postfix expression to infix
 {
   char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
   for(int i=0;e[i]!='\0';i++)
   {
       if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
       {
-        strcpy(op1,pop());
+        strcpy(op1,pop());//get operands
         strcpy(op2,pop());
-        str[0]='(';
+        str[0]='(';//start making expression
         str[1]='\0';
 
-        strcat(str,op2);
+        strcat(str,op2);// get (a
 
         int l=strlen(str);
-        str[l]=e[i];
+        str[l]=e[i];//add operator, .: get (a+
         str[l+1]='\0';
-        strcat(str,op1);
+        strcat(str,op1);//.: get (a+b
 
         l=strlen(str);
-        str[l]=')';
+        str[l]=')';//.: get (a+b)
         str[l+1]='\0';
         top++;
-        strcpy(pile[top],str);
+        strcpy(pile[top],str);//push (a+b)
       }
       else
       {
         top++;
 
         char st[20];
-        st[0]=e[i];
+        st[0]=e[i];//make a string of the operand
         st[1]='\0';
-        strcpy(pile[top],st);
+        strcpy(pile[top],st);//push it to stack
       }
   }
-  strcpy(str1,pop());
-  printf("Infix expression=%s\n",str1);
+  strcpy(str1,pop());//final pop, get output into str1
+  printf("Infix expression=%s\n",str1);//print str1
 }
 void pospre(char e[MAX])
 {
@@ -204,7 +204,7 @@ void prepost(char e[MAX])
 //-------------------------------------------
 //INFIX SECTION BEGINS, USING A CHARACTER STACK, INSTEAD OF A STRING STACK
 
-int ICP(char x,int n)
+int ICP(char x,int n)//Incoming Priority Table
 {
 
     if(x == '+' || x == '-')
@@ -220,7 +220,7 @@ int ICP(char x,int n)
     }
     else return -1;
 }
-int ISP(char x,int n)
+int ISP(char x,int n)//In-Stack Priority Table
 {
   if(x == ')' || x=='(')
       return  0;
@@ -246,22 +246,22 @@ void inpos(char e[MAX])
 
     while(e[i] != '\0')
     {
-        if(isalnum(e[i]))
+        if(isalnum(e[i]))               //i.e operand
             printf("%c",e[i]);
 
-        else if(e[i] == '(')
+        else if(e[i] == '(')            //start of new sub-expression
         {
           top2++;
           stack[top2]=e[i];
         }
-        else if(e[i] == ')' && top2>=0)
+        else if(e[i] == ')' && top2>=0) //end of sub-expression
         {
             while((x=stack[top2--]) != '(')
                 printf("%c", x);
         }
         else if(top2>=0)
         {
-            while(ISP(stack[top2],1) >= ICP(e[i],1))
+            while(ISP(stack[top2],1) >= ICP(e[i],1))//evaluate priority, push into stack
                 printf("%c",stack[top2--]);
 
             top2++;stack[top2]=e[i];
@@ -315,7 +315,7 @@ void inpre(char e[MAX])
       printf("%c",result[i]);
 
 }
-int main()
+int main()//main function
 {
   printf("\n\nEXPRESSION CONVERSIONS\n");
   int choice;
