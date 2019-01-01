@@ -11,8 +11,8 @@ Assignment: 4 (Expression Conversion using STACK)
 #include<string.h>
 #include<ctype.h>
 
-char pile[MAX][MAX];
-int top=-1;
+char pile[MAX][MAX];//STACK ARRAY
+int top=-1;//initial condition
 
 int isFull()
 {
@@ -75,7 +75,6 @@ void posin(char e[MAX])
         l=strlen(str);
         str[l]=')';
         str[l+1]='\0';
-
         top++;
         strcpy(pile[top],str);
       }
