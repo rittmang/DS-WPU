@@ -1,6 +1,4 @@
 #define MAX 5
-#define MAXIMUM(x, y) (((x) > (y)) ? (x) : (y))
-#define MINIMUM(x, y) (((x) < (y)) ? (x) : (y))
 #include<stdio.h>
 
 typedef struct{
