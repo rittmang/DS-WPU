@@ -26,6 +26,7 @@ void enqueue(Queue* q, Customer k)
     q->f=q->f+1;
 
   q->N[++q->r]=k;
+
 }
 
 Customer dequeue(Queue* q)
@@ -87,9 +88,12 @@ int main()
 
 
                   time_t current_time;
-                  current_time = time(NULL);
+                  //current_time = time(NULL);
+                  time(&current_time);
                   elem.c_time_string=ctime(&current_time);
                   enqueue(&q,elem);
+                  //current_time=time(NULL);
+
                   //status(&q);
                   display(&q);
                   break;
@@ -106,6 +110,7 @@ int main()
                   display(&q);
                   break;
         }
+
   } while(choice!=0);
 
 
