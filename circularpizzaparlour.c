@@ -1,15 +1,16 @@
-#define LENGTH 20
+#define LENGTH 24
 #define MAX 5
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 
 typedef struct{
   char name[LENGTH];
   int order_id;
   long int mob_no;
   double amount;
-  char* c_time_string;
+  char c_time_string[LENGTH];
 }Customer;
 
 typedef struct{
@@ -54,7 +55,7 @@ Customer dequeue(Queue* q)
   {
 
     Customer val=q->N[q->f];
-    q->N[q->f]=-1;
+    //q->N[q->f]=-1;
     if(q->f==q->r){q->f=q->r=-1;}
     else if(q->f==MAX-1){q->f=0;}
     else q->f++;
@@ -67,9 +68,25 @@ void display(Queue* q)
   printf("\n\n");
   if(q->f==-1)
     {printf("NO PENDING ORDERS\n\n----------------------------------------------\n");return;}
-  for(int i=q->f;i<=q->r;i++)
+
+  if(q->r >= q->f)
   {
-    printf("Customer Name=%s, Generated Order ID=%d, Mobile Number=%ld, Amount=%.2f, Time=%s\n",q->N[i].name,q->N[i].order_id,q->N[i].mob_no,q->N[i].amount,q->N[i].c_time_string);
+    for(int i=q->f;i<=q->r;i++)
+    {
+      printf("Customer Name=%s, Generated Order ID=%d, Mobile Number=%ld, Amount=%.2f, Time=%s\n",q->N[i].name,q->N[i].order_id,q->N[i].mob_no,q->N[i].amount,q->N[i].c_time_string);
+    }
+  }
+  else
+  {
+    for(int i=q->f;i<MAX;i++)
+    {
+      printf("Customer Name=%s, Generated Order ID=%d, Mobile Number=%ld, Amount=%.2f, Time=%s\n",q->N[i].name,q->N[i].order_id,q->N[i].mob_no,q->N[i].amount,q->N[i].c_time_string);
+    }
+    for(int i=0;i<=q->r;i++)
+    {
+      printf("Customer Name=%s, Generated Order ID=%d, Mobile Number=%ld, Amount=%.2f, Time=%s\n",q->N[i].name,q->N[i].order_id,q->N[i].mob_no,q->N[i].amount,q->N[i].c_time_string);
+    }
+
   }
   printf("------------------------------------------------------------\n\n");
 }
@@ -100,9 +117,15 @@ int main()
 
 
                   time_t current_time;
-                  current_time = time(NULL);
-                  elem.c_time_string=ctime(&current_time);
+                  //current_time = time(NULL);
+                  time(&current_time);
+                  //elem.c_time_string=ctime(&current_time);
+                  char* c_string=ctime(&current_time);
+                  strcpy(elem.c_time_string,c_string);
+
                   enqueue(&q,elem);
+
+
                   //status(&q);
                   display(&q);
                   break;
