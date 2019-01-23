@@ -1,3 +1,11 @@
+/*
+Name: Ritom Gupta
+Class: S.Y B.Tech CSE-D
+Batch: D4
+Roll: 203460
+Assignment: 5 (Pizza Parlour using Circular Queue)
+*/
+
 #define LENGTH 24
 #define MAX 5
 #include<stdio.h>
@@ -11,14 +19,14 @@ typedef struct{
   long int mob_no;
   double amount;
   char c_time_string[LENGTH];
-}Customer;
+}Customer;  //Customer structure, c_time_string holds the System time captured.
 
 typedef struct{
   Customer N[MAX];
   int f,r;
-}Queue;
+}Queue;//Queue structure, consisting of the array, front & rear indices
 
-void enqueue(Queue* q, Customer k)
+void enqueue(Queue* q, Customer k)//method to add an order to rear of Queue
 {
   if((q->f==0 && q->r==MAX-1) || (q->r == (q->f-1)%(MAX-1)  ))
     {printf("Queue Overflow\n\n");return;}
@@ -39,7 +47,7 @@ void enqueue(Queue* q, Customer k)
   }
 }
 
-Customer dequeue(Queue* q)
+Customer dequeue(Queue* q)//method to deliver an order from front if Queue
 {
   if(q->f==-1)
     {//printf("Queue Underflow");
@@ -63,7 +71,7 @@ Customer dequeue(Queue* q)
   }
 }
 
-void display(Queue* q)
+void display(Queue* q)//method to display order details of the current Customer order
 {
   printf("\n\n");
   if(q->f==-1)
@@ -90,7 +98,7 @@ void display(Queue* q)
   }
   printf("------------------------------------------------------------\n\n");
 }
-void status(Queue* q)
+void status(Queue* q)//method to display current values of front and rear indices
 {
   printf("\nfront=%d\trear=%d\n",q->f,q->r);
 }
@@ -115,11 +123,9 @@ int main()
                   printf("Enter Amount:");
                   scanf("%lf",&elem.amount);
 
-
+                  //this section evaluates current system time
                   time_t current_time;
-                  //current_time = time(NULL);
                   time(&current_time);
-                  //elem.c_time_string=ctime(&current_time);
                   char* c_string=ctime(&current_time);
                   strcpy(elem.c_time_string,c_string);
 
