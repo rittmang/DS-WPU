@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct
+struct Node
 {
   int item;
   struct Node *next;
-}Node;
+};
+typedef struct Node Node;
 
 void insertb(Node *first)//not working?
 {
@@ -30,36 +31,46 @@ void insertb(Node *first)//not working?
   //current=temp;
 
 }
-void inserte(Node *first)
+Node* inserte(Node *first)
 {
-  Node *current;
-  if(first==NULL)insertb(first);
+  char ch;
+  do {
 
-  else
-  {
-    Node *nn; nn=(Node *)malloc(sizeof(Node));
-    printf("Enter integer:");
-    scanf("%d",&nn->item);
-    nn->next=NULL;
+      Node *nn;
+      nn=(Node*)malloc(sizeof(Node*));
+      printf("Enter integer:");
+      scanf("%d",&nn->item);
+      nn->next=NULL;
 
-    current=first;
-    while(current->next!=NULL)current=current->next;
-    current->next=nn;
+      Node *current=first;
+      while(current->next!=NULL)current=current->next;
+      current->next=nn;
 
-  }
+      printf("Add more nodes? Y:N");
+      scanf(" %c",&ch);//maintain the space before %c
+
+  } while(ch=='Y');
+
+  return first;
 }
 void display(Node *first)
 {
-  if(first==NULL)printf("EMPTY LIST\n");
+  if(first->next==NULL)printf("EMPTY LIST\n");
 
-  Node *current=first->next;
+  else{
 
-  while(current!=NULL)
-  {
-    printf("%d\t",current->item);
-    current=current->next;
+    Node *current=first->next;
+
+    while(current!=NULL)
+    {
+      if(current->next!=NULL)
+        printf("%d--->",current->item);
+      else
+        printf("%d---|",current->item);
+      current=current->next;
+    }
+    printf("\n");
   }
-  printf("\n");
 }
 int noofnodes(Node *first)
 {
@@ -120,10 +131,12 @@ void reverse(Node *first)
   }
   first->next=prev;
 }
+}
 int main()
 {
-  Node *first=NULL;
-  first=(Node *)malloc(sizeof(Node));
+  Node *first;
+  first=(Node*)malloc(sizeof(Node*));
+  first->next=NULL;
 
 
   int choice=0;
@@ -136,7 +149,7 @@ int main()
       case 1: insertb(first);
               break;
 
-      case 2: inserte(first);
+      case 2: first=inserte(first);
               break;
 
       case 3: display(first);
@@ -157,5 +170,5 @@ int main()
 
     printf("\n----------------------------\n");
   } while(choice!=0);
-
+  return 0;
 }
