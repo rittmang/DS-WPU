@@ -85,13 +85,14 @@ int noofnodes(Node *first)
 
 Node* insertPos(Node *first, int pos)
 {
+  if(pos>noofnodes(first)+1)
+    {printf("Cannot Insert");return first;}
+
   Node *current=first->next, *temp=(Node *)malloc(sizeof(Node *));
 
   printf("Enter integer:");
   scanf("%d",&temp->item);
-  if(pos>noofnodes(first)+2)
-    {printf("Cannot Insert");return first;}
-//  temp->next=NULL;
+
 
   int counter=1;
   if(pos==counter)
@@ -114,6 +115,7 @@ Node* insertPos(Node *first, int pos)
       current=current->next;
     }
   }
+  return first;
 }
 Node* reverse(Node *first)
 {
@@ -144,14 +146,16 @@ int main()
   int choice=0;
   do {
 
-    printf("0. Exit\n1. Insert Node At Beginning (Not working)\n2. Insert Node at End\n3. Display\n4. Number of Nodes\n5. Insert At Position\n6. Reverse List\n");
+    printf("0. Exit\n1. Insert Node At Beginning\n2. Insert Node at End\n3. Display\n4. Number of Nodes\n5. Insert At Position\n6. Reverse List\n");
     scanf("%d",&choice);
     switch(choice)
     {
       case 1: first=insertb(first);
+              display(first);
               break;
 
       case 2: first=inserte(first);
+              display(first);
               break;
 
       case 3: display(first);
@@ -163,10 +167,12 @@ int main()
       case 5: printf("Enter position:");int pos;
               scanf("%d",&pos);
               first=insertPos(first,pos);
+              display(first);
               break;
 
       case 6: printf("Reversed the list\n");
               first=reverse(first);
+              display(first);
               break;
     }
 
