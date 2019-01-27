@@ -8,29 +8,29 @@ struct Node
 };
 typedef struct Node Node;
 
-void insertb(Node *first)//not working?
+Node* insertb(Node *first)
 {
-  Node *nn;
+  Node *nn, *pratham=first->next;
 
-  nn=(Node *)malloc(sizeof(Node));
+  nn=(Node *)malloc(sizeof(Node *));
   printf("Enter integer:");
   scanf("%d",&nn->item);
 
-  if(first==NULL){
-    //nn->next=NULL;
-  //  first=nn;
-    first =nn;
-    first->next=NULL;
+  if(pratham==NULL){
+
+    pratham=nn;
+    first->next=pratham;
+    pratham->next=NULL;
   }
   else{
-  nn->next=first;
-  first=nn;}
+    first->next=nn;
+    nn->next=pratham;
+    pratham=nn;
 
-  printf("In InsertB\n");
-  //current->next=temp;
-  //current=temp;
-
+  }
+  return first;
 }
+
 Node* inserte(Node *first)
 {
   char ch;
@@ -83,43 +83,44 @@ int noofnodes(Node *first)
   return i;
 }
 
-void insertPos(Node *first, int pos)
+Node* insertPos(Node *first, int pos)
 {
-  Node *current=first->next, *temp=(Node *)malloc(sizeof(Node));
+  Node *current=first->next, *temp=(Node *)malloc(sizeof(Node *));
 
   printf("Enter integer:");
   scanf("%d",&temp->item);
   if(pos>noofnodes(first)+2)
-    {printf("Cannot Insert");return;}
-  temp->next=NULL;
+    {printf("Cannot Insert");return first;}
+//  temp->next=NULL;
 
-  /*int i=0;
-
-
-  while(i++!=pos)
+  int counter=1;
+  if(pos==counter)
   {
-    current=current->next;
-    temp->next=current->next;
-    current->next=temp;
-  }*/
-  for(int i=1;i<pos-1;i++)
-  {
-    if(current->next=NULL)
-    {
-      printf("Less elements");
-      return;
-    }
-    current=current->next;
+    first->next=temp;
+    temp->next=current;
   }
-  temp->next=current->next;
-  current->next=temp;
-
+  while(current!=NULL)
+  {
+    if(counter==pos-1)
+    {
+      Node *nd=current->next;
+      current->next=temp;
+      temp->next=nd;
+      break;
+    }
+    else
+    {
+      counter++;
+      current=current->next;
+    }
+  }
 }
-void reverse(Node *first)
+Node* reverse(Node *first)
 {
 
-  Node *current,*prev,*temp;
-  if(first==NULL){printf("Empty");return;}
+  Node *current=first->next,*prev=NULL,*temp;
+  if(first==NULL){printf("Empty");return first;}
+
   else{
 
   while(current!=NULL)
@@ -130,6 +131,7 @@ void reverse(Node *first)
     current=temp;
   }
   first->next=prev;
+  return first;
 }
 }
 int main()
@@ -146,7 +148,7 @@ int main()
     scanf("%d",&choice);
     switch(choice)
     {
-      case 1: insertb(first);
+      case 1: first=insertb(first);
               break;
 
       case 2: first=inserte(first);
@@ -158,13 +160,13 @@ int main()
       case 4: printf("Number of nodes=%d\n",noofnodes(first));
               break;
 
-      case 5: printf("Enter index:");int pos;
+      case 5: printf("Enter position:");int pos;
               scanf("%d",&pos);
-              insertPos(first,pos);
+              first=insertPos(first,pos);
               break;
 
       case 6: printf("Reversed the list\n");
-              reverse(first);
+              first=reverse(first);
               break;
     }
 
