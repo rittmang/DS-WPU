@@ -66,19 +66,25 @@ int bsearch(student stude[],int r,int n)
 
 void selectionsort(student stude[],int n)
 {
+  int min=0;
+
   for(int i=0;i<n-1;i++)
   {
+    min=i;
     for(int j=i+1;j<n;j++)
     {
-      if(stude[i].roll>stude[j].roll)
+      if(stude[min].roll>stude[j].roll)
+        min=j;
+    }
+      if(min!=i)
       {
-        student temp= stude[i];
-        stude[i]=stude[j];
-        stude[j]=temp;
+        student temp= stude[min];
+        stude[min]=stude[i];
+        stude[i]=temp;
       }
     }
   }
-}
+
 void bubblesort(student stude[],int n)
 {
   for(int i=0;i<n-1;i++)
