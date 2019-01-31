@@ -75,8 +75,8 @@ void display(Node *first)//display the list
 }
 int noofnodes(Node *first)//counts number of nodes
 {
-  Node *current=first;int i=0;
-  while(current->next!=NULL)
+  Node *current=first->next;int i=0;
+  while(current!=NULL)
   {
     i++;
     current=current->next;
@@ -149,7 +149,7 @@ Node* reverse(Node *first)//reverses the list
 {
 
   Node *current=first->next,*prev=NULL,*temp;
-  if(first==NULL){printf("Empty");return first;}
+  if(current==NULL){printf("Empty");return first;}
 
   else{
 
