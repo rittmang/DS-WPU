@@ -132,7 +132,7 @@ int main() {
    for(int i=0;i<n;i++)
    {
         printf("\nEnter name=");
-        scanf("%s",&stud[i].name);
+        scanf("%s",stud[i].name);
   roll: printf("\nEnter roll=");// goto statement redirects here
         scanf("%d",&stud[i].roll);
         if(!unique(stud,stud[i].roll,i-1))
@@ -141,7 +141,7 @@ int main() {
         		goto roll;
         }
         printf("\nEnter city=");
-        scanf("%s",&stud[i].city);
+        scanf("%s",stud[i].city);
         printf("\nEnter percentage=");
         scanf("%f",&stud[i].perc);
         printf("----------------------------");
