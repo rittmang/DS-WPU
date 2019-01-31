@@ -28,7 +28,7 @@ int isEmpty()         //Returns 1 if pile is empty else 0
 }
 void push(char elem[20])    //Not really used
 {
-  if(isFull(pile))
+  if(isFull())
   {
     printf("Stack OverFlow.");return;
   }
@@ -41,7 +41,7 @@ void push(char elem[20])    //Not really used
 char* pop()                //pops string element
 {
   char *popcorn;
-  if(isEmpty(pile))
+  if(isEmpty())
   {
     printf("Stack Underflow.");return "-999";
   }
@@ -58,7 +58,7 @@ void posin(char e[MAX])//converts postfix expression to infix
   char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
   for(int i=0;e[i]!='\0';i++)
   {
-      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/' || e[i]=='^')
       {
         strcpy(op1,pop());//get operands
         strcpy(op2,pop());
@@ -96,7 +96,7 @@ void pospre(char e[MAX])
   char str[MAX],op1[MAX],op2[MAX],st[MAX],str1[MAX];
   for(int i=0;e[i]!='\0';i++)
   {
-      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/' || e[i]=='^')
       {
         strcpy(op1,pop());//get b
         strcpy(op2,pop());//get a
@@ -131,7 +131,7 @@ void prein(char e[MAX])
   int l1=strlen(e);
   for(int i=l1;i>=0;i--)
   {
-      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/' || e[i]=='^')
       {
         strcpy(op1,pop());
         strcpy(op2,pop());
@@ -172,7 +172,7 @@ void prepost(char e[MAX])
   int l1=strlen(e);
   for(int i=l1;i>=0;i--)
   {
-      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/')
+      if(e[i]=='+' || e[i]=='-' || e[i]=='*' || e[i]=='/' || e[i]=='^')
       {
         strcpy(op1,pop());
         strcpy(op2,pop());
@@ -228,8 +228,8 @@ int ISP(char x,int n)//In-Stack Priority Table
         return 2;
     if(x == '*' || x == '/')
         return 3;
-    if(x == ')' || x=='(')
-        return  4;
+    //if(x == ')' || x=='(')
+      //  return  4;
     if(x=='^')
       {
           if(n==0)return 6;
@@ -259,13 +259,15 @@ void inpos(char e[MAX])
             while((x=stack[top2--]) != '(')
                 printf("%c", x);
         }
-        else if(top2>=0)
+        else
         {
             while(ISP(stack[top2],1) >= ICP(e[i],1))//evaluate priority, push into stack
                 printf("%c",stack[top2--]);
 
             top2++;stack[top2]=e[i];
         }
+        
+
         i++;
     }
     while(top2 != -1)
