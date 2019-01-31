@@ -78,7 +78,8 @@ void status(Queue* q)//method to display current values of front and rear indice
 int main()
 {
   Queue q;Customer returns;
-  q.f=-1;q.r=-1;
+  q.f=-1;q.r=-1;//V.V. IMP
+  int random_start=rand();
 
   int choice=0;
   do {
@@ -90,7 +91,7 @@ int main()
           case 1: printf("Enter Customer Name:");
                   Customer elem;
                   scanf("%s",elem.name);
-                  elem.order_id=rand();
+                  elem.order_id=random_start++;
                   printf("Enter Customer Mobile Number:");
                   scanf("%ld",&elem.mob_no);
                   printf("Enter Amount:");
