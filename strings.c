@@ -198,7 +198,10 @@ int main()
 		case 5:	printf("Enter two strings:");//Check if 2 strings are equal
 						scanf("%s",str);
 						scanf("%s",str1);
-						printf("%s?=%s:%d",str,str1,equal(str,str1));
+						if(length(str)>length(str1))
+							printf("%s?=%s: %d",str,str1,equal(str,str1));
+						else
+								printf("%s?=%s: %d",str,str1,equal(str1,str));
 						break;
 
 		case 6:	printf("Enter string to reverse:\n");//Reverse string
@@ -231,7 +234,12 @@ int main()
 		case 10:printf("Enter 2 strings to compare:");//Compare 2 strings
 						accept(str);
 						accept(str1);
-						int d=compare(str,str1);
+						int d;
+						if(length(str)>length(str1))
+							d=compare(str,str1);
+						else
+							d=-compare(str1,str);
+
 						if(d>0){printf("%s is greater than %s",str,str1);}
 						if(d<0){printf("%s is less than %s",str,str1);}
 						if(d==0){printf("%s is equal to %s",str,str1);}
