@@ -9,9 +9,9 @@ Assignment: 5 (Pizza Parlour using Simple Queue)
 #define LENGTH 24
 #define MAX 5
 #include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-#include<string.h>
+#include<stdlib.h>//for rand()
+#include<time.h>//for system time capture
+#include<string.h>//for above
 
 typedef struct{
   char name[LENGTH];
