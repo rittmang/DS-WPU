@@ -60,7 +60,7 @@ void compact(int mat[max][max],int compmat[max][3],int r,int c,int displ)//displ
     }
   }
   compmat[0][2]=nonzero;
-  if(displ=1)
+  if(displ==1)
     {display2(compmat,nonzero+1,3);}
   else return;
 }
