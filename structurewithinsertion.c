@@ -15,7 +15,7 @@ void display(student stude[],int n)
     printf("\tRoll=%d",stude[i].roll);
     printf("\tCity=%s",stude[i].city);
     printf("\tPercentage=%f",stude[i].perc);
-    
+
   }
 }
 void display1(student stude[],int i)
@@ -44,7 +44,7 @@ int bsearch(student stude[],int r,int n)
   printf("Sorted DataBase:\n");
   display(stude,n);
   printf("\n---");
-  int l=0,u=n-1,flag=0;
+  int l=0,u=n-1;
   while(l<=u)
   {
     int mid=(l+u)/2;
@@ -130,7 +130,7 @@ int main() {
   roll: printf("\nEnter roll=");// goto statement redirects here
         scanf("%d",&stud[i].roll);
         if(!unique(stud,stud[i].roll,i-1))
-        {	
+        {
         		printf("Inputted roll number exists. Re-enter roll number");
         		goto roll;
         }
